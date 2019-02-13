@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Contact from './Contact';
+import { Contact } from './Contact';
 
 class Contacts extends Component {
 
@@ -29,10 +29,18 @@ class Contacts extends Component {
 	}
 
 	render() {
+		const { contacts } = this.state;
 		return (
-			<div>{this.state.contacts}</div>
+			<div>
+				{contacts.map(contact => (
+					<Contact 
+						name={contact.name}
+						email={contact.email} 
+						phone={contact.phone} 
+					/>
+				))}
+			</div>
 		)
-		
 	}
 }
 
