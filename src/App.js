@@ -1,22 +1,14 @@
-import React, { Component } from 'react';
-import Contacts from './components/Contacts';
-import Header from './components/Header';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React from 'react';
+import Nav from './Nav';
+import Channel from './Channel';
 
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-				<Header branding="Contact Manager" />
-				<div className="container">
-					<Contacts />
-				</div>
-
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <Nav />
+      <Channel />
+    </div>
+  );
 }
 
 export default App;
