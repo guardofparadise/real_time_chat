@@ -1,10 +1,18 @@
 import React from 'react';
+import useCollection from './useCollection';
 
 function Messages() {
+	const messages = useCollection(
+		'channels/general/messages',
+		'createdAt'
+	)
+
   return (
     <div className="Messages">
       <div className="EndOfMessages">That's every message!</div>
-      <div>
+			{messages.map((message, index) => {
+				return index === 0 ? (
+			<div key={index}>
         <div className="Day">
           <div className="DayLine" />
           <div className="DayText">12/6/2018</div>
@@ -17,15 +25,18 @@ function Messages() {
               <span className="UserName">Ryan Florence </span>
               <span className="TimeStamp">3:37 PM</span>
             </div>
-            <div className="MessageContent">Alright, lets do this.</div>
+            <div className="MessageContent">{message.text}</div>
           </div>
         </div>
       </div>
-      <div>
-        <div className="Message no-avatar">
-          <div className="MessageContent">works now?</div>
-        </div>
-      </div>
+				) : (
+				<div key={index}>
+					<div className="Message no-avatar">
+						<div className="MessageContent">{message.text}</div>
+					</div>
+				</div>					
+				)
+			})}
     </div>
   );
 }
